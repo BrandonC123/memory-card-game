@@ -12,8 +12,7 @@ const CardContainer = () => {
         { imgTitle: "Monitor", imgUrl: "./img/monitor-pic.jpg", id: 4 },
         { imgTitle: "Motherboard", imgUrl: "./img/motherboard-pic.jpg", id: 5 },
         { imgTitle: "Mouse", imgUrl: "./img/mouse-pic.jpg", id: 6 },
-        { imgTitle: "Ram", imgUrl: "./img/ram-pic.jpg", id: 7 },
-        { imgTitle: "Solid State Drive", imgUrl: "./img/ssd-pic.jpg", id: 8 },
+        { imgTitle: "Solid State Drive", imgUrl: "./img/ssd-pic.jpg", id: 7 },
     ]);
     const [randomNum, setRandomNum] = useState([]);
     const [selectedPics, setSelectedPics] = useState([]);
@@ -31,17 +30,38 @@ const CardContainer = () => {
     function addSelection(selection) {
         if (selectedPics.includes(selection)) {
             // New round
+            // Reset scoreboard
+            console.log(selectedPics);
+            console.log(selection);
+        } else {
+            setSelectedPics([...selectedPics, selection]);
         }
-        setSelectedPics([...selectedPics, selection]);
+        setRandomNum([]);
+        generateRandomNums();
     }
     return (
         <div className="card-container container">
             {generateRandomNums()}
-            <Card imgDetail={imgArray[randomNum[0]]} />
-            <Card imgDetail={imgArray[randomNum[1]]} />
-            <Card imgDetail={imgArray[randomNum[2]]} />
-            <Card imgDetail={imgArray[randomNum[3]]} />
-            <Card imgDetail={imgArray[randomNum[4]]} />
+            <Card
+                imgDetail={imgArray[randomNum[0]]}
+                addSelection={addSelection}
+            />
+            <Card
+                imgDetail={imgArray[randomNum[1]]}
+                addSelection={addSelection}
+            />
+            <Card
+                imgDetail={imgArray[randomNum[2]]}
+                addSelection={addSelection}
+            />
+            <Card
+                imgDetail={imgArray[randomNum[3]]}
+                addSelection={addSelection}
+            />
+            <Card
+                imgDetail={imgArray[randomNum[4]]}
+                addSelection={addSelection}
+            />
         </div>
     );
 };
