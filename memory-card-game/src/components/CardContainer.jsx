@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useMemo } from "react";
 import { useState } from "react";
 import Card from "./Card";
 
@@ -14,19 +15,33 @@ const CardContainer = () => {
         { imgTitle: "Ram", imgUrl: "./img/ram-pic.jpg", id: 7 },
         { imgTitle: "Solid State Drive", imgUrl: "./img/ssd-pic.jpg", id: 8 },
     ]);
-    const [randomNumArray, setRandomNumArray] = useState([]);
+    const [randomNum, setRandomNum] = useState([]);
+    const [selectedPics, setSelectedPics] = useState([]);
 
     function generateRandomNums() {
-        return Math.floor(Math.random() * imgArray.length);
+        let num = Math.floor(Math.random() * imgArray.length);
+        if (randomNum.includes(num)) {
+            generateRandomNums();
+            return;
+        }
+        if (randomNum.length < 5) {
+            setRandomNum([...randomNum, num]);
+        }
     }
-
+    function addSelection(selection) {
+        if (selectedPics.includes(selection)) {
+            // New round
+        }
+        setSelectedPics([...selectedPics, selection]);
+    }
     return (
-        <div className="card-container">
-            <Card imgDetail={imgArray[generateRandomNums()]} />
-            <Card imgDetail={imgArray[generateRandomNums()]} />
-            <Card imgDetail={imgArray[generateRandomNums()]} />
-            <Card imgDetail={imgArray[generateRandomNums()]} />
-            <Card imgDetail={imgArray[generateRandomNums()]} />
+        <div className="card-container container">
+            {generateRandomNums()}
+            <Card imgDetail={imgArray[randomNum[0]]} />
+            <Card imgDetail={imgArray[randomNum[1]]} />
+            <Card imgDetail={imgArray[randomNum[2]]} />
+            <Card imgDetail={imgArray[randomNum[3]]} />
+            <Card imgDetail={imgArray[randomNum[4]]} />
         </div>
     );
 };
