@@ -1,38 +1,90 @@
-.App {
-  text-align: center;
+:root {
+    --accent-color-green: #76b900;
+    --accent-color-white: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html,
+body {
+    margin: 0;
+    padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+    background: linear-gradient(
+        90deg,
+        rgba(2, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 35%,
+        rgba(58, 59, 60, 1) 100%
+    );
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+* {
+    box-sizing: border-box;
 }
 
-.App-link {
-  color: #61dafb;
+img {
+    max-width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.row {
+    display: flex;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.accent-text {
+    color: var(--accent-color-green);
+    font-weight: 600;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: white;
+    padding: 0.5em 1em;
+}
+
+.header-title {
+    color: black;
+    margin: 0;
+}
+
+.instruction-container {
+    color: var(--accent-color-white);
+}
+
+.scoreboard-container {
+    justify-content: space-between;
+    color: var(--accent-color-white);
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.card {
+    /* height: 45%; */
+    padding: 2em 1em;
+    background-color: rgb(15, 15, 15);
+    color: white;
+    max-width: 500px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--accent-color-green);
+}
+
+.card-img {
+    /* max-width: 300px; */
 }
