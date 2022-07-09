@@ -1,4 +1,4 @@
-const Scoreboard = () => {
+const Scoreboard = (props) => {
     return (
         <div className="scoreboard-container container row">
             <div className="instruction-container">
@@ -8,8 +8,8 @@ const Scoreboard = () => {
                 <p>Points can be see on the right</p>
             </div>
             <div className="score-content-container">
-                <p>Score: 1</p>
-                <p>Best Score: 1</p>
+                <p>Score: {props.currentScore}</p>
+                <p>Best Score: {props.bestScore}</p>
             </div>
         </div>
     );

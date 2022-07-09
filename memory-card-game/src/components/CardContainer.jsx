@@ -3,11 +3,13 @@ import { useMemo } from "react";
 import { useState } from "react";
 import Card from "./Card";
 
-const CardContainer = () => {
+const CardContainer = (props) => {
     const [imgArray, setImgArray] = useState([
+        { imgTitle: "CPU Cooler", imgUrl: "./img/cpu-cooler-pic.jpg", id: 0 },
         { imgTitle: "CPU", imgUrl: "./img/cpu-pic.jpg", id: 0 },
         { imgTitle: "Graphics Card", imgUrl: "./img/gpu-pic.jpg", id: 1 },
         { imgTitle: "Hard Drive", imgUrl: "./img/hard-drive-pic.jpg", id: 2 },
+        { imgTitle: "Headphone", imgUrl: "./img/headphone-pic.jpg", id: 0 },
         { imgTitle: "Keyboard", imgUrl: "./img/keyboard-pic.jpg", id: 3 },
         { imgTitle: "Monitor", imgUrl: "./img/monitor-pic.jpg", id: 4 },
         { imgTitle: "Motherboard", imgUrl: "./img/motherboard-pic.jpg", id: 5 },
@@ -23,7 +25,7 @@ const CardContainer = () => {
             generateRandomNums();
             return;
         }
-        if (randomNum.length < 5) {
+        if (randomNum.length < 4) {
             setRandomNum([...randomNum, num]);
         }
     }
@@ -33,14 +35,16 @@ const CardContainer = () => {
             // Reset scoreboard
             console.log(selectedPics);
             console.log(selection);
+            props.addCurrentScore(false);
         } else {
             setSelectedPics([...selectedPics, selection]);
+            props.addCurrentScore(true);
         }
         setRandomNum([]);
         generateRandomNums();
     }
     return (
-        <div className="card-container container">
+        <div className="card-container">
             {generateRandomNums()}
             <Card
                 imgDetail={imgArray[randomNum[0]]}
@@ -56,10 +60,6 @@ const CardContainer = () => {
             />
             <Card
                 imgDetail={imgArray[randomNum[3]]}
-                addSelection={addSelection}
-            />
-            <Card
-                imgDetail={imgArray[randomNum[4]]}
                 addSelection={addSelection}
             />
         </div>
