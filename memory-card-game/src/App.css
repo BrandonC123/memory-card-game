@@ -55,29 +55,32 @@ img {
     margin: 0;
 }
 
-.instruction-container {
-    color: var(--accent-color-white);
-}
-
 .scoreboard-container {
     justify-content: space-between;
     color: var(--accent-color-white);
+    font-weight: 600;
+    font-size: 1.125rem;
+    padding: 1em 0;
+}
+
+.instruction-container > p {
+    margin: 0;
 }
 
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
 }
 
 .card {
-    /* height: 45%; */
+    text-align: center;
     padding: 2em 1em;
     background-color: rgb(15, 15, 15);
     color: white;
-    max-width: 500px;
+    max-width: 350px;
 }
 
 .card:hover {
